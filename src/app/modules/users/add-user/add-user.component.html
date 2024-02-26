@@ -1,0 +1,122 @@
+<div class="container-fluid">
+  <div class="row">
+    <div
+      style="height: 85vh; width: fit-content; margin-top: 2rem"
+      class="col-lg-2 p-3 nav-child brdr"
+    >
+      <a class="font-600" routerLink="/dashboard">Home</a>
+      <a class="font-600" routerLink="/users">Users</a>
+    </div>
+    <div class="col">
+      <div
+        class="d-flex flex-column h-100 p-5 w-full justify-content-center align-items-center"
+      >
+        <h1 class="text-clr-400">Add User Form</h1>
+        <div class="login">
+          <form #addUserForm="ngForm" class="form brdr text-clr-400">
+            <div class="form-group">
+              <label for="exampleInputId">Employee Id</label>
+              <input
+                name="empId"
+                [(ngModel)]="user.empId"
+                pattern="[a-zA-Z0-9]*"
+                required
+                #empId="ngModel"
+                type="text"
+                class="form-control"
+                id="exampleInputId"
+                placeholder="Employee Id"
+              />
+              <div
+                *ngIf="empId.invalid && empId.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Invalid Emp Id
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputUsername">Username</label>
+              <input
+                name="name"
+                [(ngModel)]="user.name"
+                pattern="[a-zA-Z0-9]*"
+                required
+                #name="ngModel"
+                type="text"
+                class="form-control"
+                id="exampleInputUsername"
+                placeholder="Enter Username"
+              />
+              <div
+                *ngIf="name.invalid && name.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Invalid Username
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail">Email</label>
+              <input
+                name="email"
+                [(ngModel)]="user.email"
+                email
+                required
+                #email="ngModel"
+                type="email"
+                class="form-control"
+                id="exampleInputEmail"
+                placeholder="Enter Email"
+              />
+              <div
+                *ngIf="email.invalid && email.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Invalid Email.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputSelection">Status</label>
+              <select
+                name="status"
+                [(ngModel)]="user.status"
+                required
+                #status="ngModel"
+                id="exampleInputSelection"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option selected></option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+              </select>
+              <div
+                *ngIf="status.invalid && status.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Select the status.
+              </div>
+            </div>
+            <div class="d-flex gap-5">
+              <button
+                (click)="cancel()"
+                style="border: none"
+                class="button delete"
+              >
+                Cancel
+              </button>
+              <button
+                [disabled]="addUserForm.invalid"
+                style="border: none"
+                class="button primary"
+                (click)="addUser()"
+              >
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div
+      style="height: 85vh; width: fit-content; margin-top: 2rem"
+      class="col-lg-2 p-3 nav-child brdr"
+    >
+      <a class="font-600" routerLink="/dashboard">Home</a>
+      <a class="font-600" routerLink="/users">Users</a>
+    </div>
+    <div class="col p-3">
+      <div class="d-flex justify-content-between">
+        <h1 class="text-clr-400">All User List</h1>
+        <div>
+          <a class="button primary" routerLink="/users/add">Add</a>
+        </div>
+      </div>
+      <table style="border-radius:var(--bg)" class="table rounded shadow mt-5">
+        <thead>
+          <tr>
+            <th >#</th>
+            <th >Username</th>
+            <th >Email</th>
+            <th >Status</th>
+            <th >Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th >1</th>
+            <td>Jack Sully</td>
+            <td>jack@email.com</td>
+            <td>Active</td>
+            <td>
+              <a style="margin-right: 20px; color: inherit; font-size: 1rem;" routerLink="/users/edit/23">
+                <i class="fa-solid fa-pen edit"></i>
+              </a>
+              <i class="fa-solid fa-trash delete"></i>
+            </td>
+          </tr>
+          <tr>
+            <th >1</th>
+            <td>Jack Sully</td>
+            <td>jack@email.com</td>
+            <td>Active</td>
+            <td>
+              <a style="margin-right: 20px; color: inherit; font-size: 1rem;" routerLink="/users/edit/23">
+                <i class="fa-solid fa-pen edit"></i>
+              </a>
+              <i class="fa-solid fa-trash delete"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

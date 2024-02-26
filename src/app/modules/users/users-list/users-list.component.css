@@ -1,0 +1,37 @@
+a {
+  text-decoration: none;
+  color: var(--clr-main-400);
+  font-size: 1.2rem;
+}
+a:hover {
+  color: var(--clr-main-100);
+}
+.nav-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 2rem;
+}
+.table > * > * > * {
+  background: none;
+  color: var(--clr-main-400);
+}
+
+tr {
+  border-color: var(--clr-main-900);
+}
+
+.delete,
+.edit {
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: var(--pink-400);
+  transform: scale(1.1);
+}
+
+.edit:hover {
+  color: var(--emarald-900);
+  transform: scale(1.1);
+}

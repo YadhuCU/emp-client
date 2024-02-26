@@ -1,0 +1,8 @@
+a {
+  cursor: pointer;
+  padding-block: 0.6em;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--clr-main-900);
+}

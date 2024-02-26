@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+    <div
+      style="height: 85vh; width: fit-content; margin-top: 2rem"
+      class="col-lg-2 p-3 nav-child brdr"
+    >
+      <a class="font-600" routerLink="/dashboard">Home</a>
+      <a class="font-600" routerLink="/users">Users</a>
+    </div>
+    <div class="col">
+      <div
+        class="d-flex flex-column h-100 p-5 w-full justify-content-center align-items-center"
+      >
+        <h1 class="text-clr-400">Update User Form.</h1>
+        <div class="login">
+          <form class="form brdr text-clr-400">
+            <div class="form-group">
+              <label for="exampleInputId">Employee Id</label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputId"
+                placeholder="Employee Id"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                placeholder="Enter email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputSelection">Status</label>
+              <select
+                id="exampleInputSelection"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option selected></option>
+                <option value="">Active</option>
+                <option value="">Inactive</option>
+              </select>
+            </div>
+            <div class="d-flex gap-5">
+              <button type="submit" style="border: none" class="button delete">
+                Cancel
+              </button>
+              <button type="submit" style="border: none" class="button primary">
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

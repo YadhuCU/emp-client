@@ -1,1 +1,160 @@
 /* You can add global styles to this file, and also import other style files */
+@import "ngx-toastr/toastr";
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: all 220ms ease-in-out;
+  letter-spacing: 0.1em;
+}
+.font-200 {
+  font-weight: 200;
+}
+.font-400 {
+  font-weight: 400;
+}
+.font-600 {
+  font-weight: 600;
+}
+.font-800 {
+  font-weight: 800;
+}
+
+:root {
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-400: #f472b6;
+  --pink-900: #500724;
+
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-400: #38bdf8;
+  --sky-900: #0c4a6e;
+
+  --emarald-50: #ecfdf5;
+  --emarald-100: #d1fae5;
+  --emarald-400: #34d399;
+  --emarald-900: #064e3b;
+
+  --jaguar-50: #f5f2fd;
+  --jaguar-100: #ece4fa;
+  --jaguar-400: #7250e0;
+  --jaguar-900: #2e1862;
+
+  --asphalt-50: #fbf3eb;
+  --asphalt-100: #f6e3cb;
+  --asphalt-400: #da7f35;
+  --asphalt-900: #64281f;
+
+  --clr-primary: #020617;
+  --clr-neutral: #f8fafc;
+
+  --clr-main-50: var(--emarald-50);
+  --clr-main-100: var(--emarald-100);
+  --clr-main-400: var(--emarald-400);
+  --clr-main-900: var(--emarald-900);
+
+  --br: 1px;
+}
+
+::selection {
+  background: var(--clr-primary);
+  color: var(--clr-main-400);
+}
+
+body {
+  color: var(--clr-main-900);
+  background: radial-gradient(
+      ellipse at top,
+      var(--clr-main-900),
+      var(--clr-primary)
+    ),
+    radial-gradient(ellipse at bottom, var(--clr-main-100), transparent);
+
+  padding: 1rem;
+}
+
+.text-primary {
+  color: var(--clr-primary);
+}
+
+.text-neutral {
+  color: var(--clr-neutral);
+}
+
+.text-clr-100 {
+  color: var(--clr-main-100);
+}
+.text-clr-400 {
+  color: var(--clr-main-400);
+}
+.text-clr-900 {
+  color: var(--clr-main-900);
+}
+
+.bg-clr-100 {
+  background: var(--clr-main-100);
+}
+.bg-clr-400 {
+  background: var(--clr-main-400);
+}
+.bg-clr-900 {
+  background: var(--clr-main-900);
+}
+.button {
+  padding: 0.3em 1.15em;
+  border-radius: var(--br);
+  background: none;
+  position: relative;
+  overflow: hidden;
+}
+.button::after {
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  top: 0;
+  content: "";
+  z-index: -1;
+  transition: all 220ms ease-in;
+}
+.delete.button::after {
+  background: var(--pink-400);
+}
+
+.primary.button::after {
+  background: var(--clr-main-400);
+}
+.button:hover::after {
+  right: 0;
+}
+.button.primary:hover {
+  color: var(--clr-main-900) !important;
+}
+.button.delete:hover {
+  color: var(--pink-900) !important;
+}
+
+.button.primary {
+  border: 2px solid var(--clr-main-400) !important;
+  color: var(--clr-main-400);
+}
+
+.button.delete {
+  border: 2px solid var(--pink-400) !important;
+  color: var(--pink-400);
+}
+
+.brdr {
+  border: 1px solid var(--clr-main-900);
+  border-radius: var(--br);
+  box-shadow: 10px 10px 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+.tracking-widest {
+  letter-spacing: 0.1em;
+}

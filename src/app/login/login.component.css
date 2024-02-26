@@ -1,0 +1,35 @@
+.login {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login .form {
+  width: min(500px, 80%);
+  border-radius: var(--br);
+  padding-inline: 1rem;
+  padding-block: 2rem;
+}
+
+.form > * {
+  margin-bottom: 1rem;
+  margin-inline: auto;
+}
+.form input {
+  background: none;
+  border: 1px solid var(--clr-main-400) !important;
+  outline: none;
+  color: var(--clr-main-100);
+  border-radius: var(--br);
+}
+.form input:focus {
+  background: var(--clr-main-900);
+  border: 1px solid var(--clr-main-400);
+  color: var(--clr-main-100);
+  outline: none !important;
+  box-shadow: none;
+}
+.form input::placeholder {
+  color: var(--clr-main-900);
+}

@@ -13,4 +13,20 @@ export class ApiService {
   addUser(user: UserSchema) {
     return this.http.post(`${this.SERVER_URL}/users`, user);
   }
+
+  getAllUsers() {
+    return this.http.get(`${this.SERVER_URL}/users`);
+  }
+
+  getUser(id: string) {
+    return this.http.get(`${this.SERVER_URL}/users/${id}`);
+  }
+
+  updateUser(id: string, user: UserSchema) {
+    return this.http.put(`${this.SERVER_URL}/users/${id}`, user);
+  }
+
+  removeUser(id: string) {
+    return this.http.delete(`${this.SERVER_URL}/users/${id}`);
+  }
 }

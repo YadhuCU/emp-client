@@ -12,4 +12,12 @@ export class AdminService {
   getAdminDetails() {
     return this.http.get(`${this.SERVER_URL}/users/1`);
   }
+
+  updateAdmin(data: any) {
+    return this.http.put(`${this.SERVER_URL}/users/1`, data);
+  }
+
+  isLogedIn(): boolean {
+    return !!sessionStorage.getItem('admin');
+  }
 }

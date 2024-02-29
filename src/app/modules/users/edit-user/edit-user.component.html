@@ -13,53 +13,105 @@
       >
         <h1 class="text-clr-400">Update User Form.</h1>
         <div class="login">
-          <form class="form brdr text-clr-400">
+          <form #editUserForm="ngForm" class="form brdr text-clr-400">
             <div class="form-group">
               <label for="exampleInputId">Employee Id</label>
               <input
+                name="empId"
+                [(ngModel)]="user.empId"
+                pattern="[a-zA-Z0-9]*"
+                required
+                #empId="ngModel"
                 type="text"
                 class="form-control"
                 id="exampleInputId"
                 placeholder="Employee Id"
               />
+              <div
+                *ngIf="empId.invalid && empId.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Invalid Emp Id
+              </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Username</label>
+              <label for="exampleInputUsername">Username</label>
               <input
+                name="name"
+                [(ngModel)]="user.name"
+                pattern="[a-zA-Z0-9]*"
+                required
+                #name="ngModel"
                 type="text"
                 class="form-control"
-                id="exampleInputEmail1"
-                placeholder="Enter email"
+                id="exampleInputUsername"
+                placeholder="Enter Username"
               />
+              <div
+                *ngIf="name.invalid && name.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Invalid Username
+              </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Email</label>
+              <label for="exampleInputEmail">Email</label>
               <input
+                name="email"
+                [(ngModel)]="user.email"
+                email
+                required
+                #email="ngModel"
                 type="email"
                 class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
+                id="exampleInputEmail"
+                placeholder="Enter Email"
               />
+              <div
+                *ngIf="email.invalid && email.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Invalid Email.
+              </div>
             </div>
 
             <div class="form-group">
               <label for="exampleInputSelection">Status</label>
               <select
+                name="status"
+                [(ngModel)]="user.status"
+                required
+                #status="ngModel"
                 id="exampleInputSelection"
                 class="form-select"
                 aria-label="Default select example"
               >
                 <option selected></option>
-                <option value="">Active</option>
-                <option value="">Inactive</option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
               </select>
+              <div
+                *ngIf="status.invalid && status.touched"
+                style="color: var(--pink-400); font-size: 0.7rem"
+              >
+                *Select the status.
+              </div>
             </div>
             <div class="d-flex gap-5">
-              <button type="submit" style="border: none" class="button delete">
+              <button
+                (click)="cancel(user.id)"
+                style="border: none"
+                class="button delete"
+              >
                 Cancel
               </button>
-              <button type="submit" style="border: none" class="button primary">
-                Add
+              <button
+                (click)="update(user.id)"
+                [disabled]="editUserForm.invalid"
+                style="border: none"
+                class="button primary"
+              >
+                Update
               </button>
             </div>
           </form>

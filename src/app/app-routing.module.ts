@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -10,9 +11,15 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [authGuard],
     component: HomeComponent,
   },
-  { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) },
+  {
+    path: 'users',
+    canActivate: [authGuard],
+    loadChildren: () =>
+      import('./modules/users/users.module').then((m) => m.UsersModule),
+  },
   {
     path: '**',
     redirectTo: '',

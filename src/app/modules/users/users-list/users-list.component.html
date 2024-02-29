@@ -14,43 +14,94 @@
           <a class="button primary" routerLink="/users/add">Add</a>
         </div>
       </div>
-      <table style="border-radius:var(--bg)" class="table rounded shadow mt-5">
+      <div class="d-flex align-items mt-t container">
+        <span>Search: </span>
+        <input
+          [(ngModel)]="searchKey"
+          type="text"
+          class="ms-2 w-25 me-5"
+          placeholder="Search by username"
+        />
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Sort
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li>
+              <button (click)="sortById()" class="dropdown-item">By id</button>
+            </li>
+            <li>
+              <button (click)="sortByName()" class="dropdown-item">
+                By Username
+              </button>
+            </li>
+          </ul>
+        </div>
+        <button (click)="generatePdf()" class="btn btn-primary ms-auto">
+          Export
+        </button>
+      </div>
+      <table style="border-radius: var(--bg)" class="table rounded shadow mt-5">
         <thead>
           <tr>
-            <th >#</th>
-            <th >Username</th>
-            <th >Email</th>
-            <th >Status</th>
-            <th >Action</th>
+            <th>#</th>
+            <th>EmpId</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th >1</th>
-            <td>Jack Sully</td>
-            <td>jack@email.com</td>
-            <td>Active</td>
+          <tr
+            *ngFor="
+              let user of allUsers
+                | search: searchKey
+                | paginate: { itemsPerPage: 5, currentPage: page };
+              let i = index
+            "
+            [hidden]="!user.empId"
+          >
+            <td>{{ i }}</td>
+            <td>{{ user.empId }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
             <td>
-              <a style="margin-right: 20px; color: inherit; font-size: 1rem;" routerLink="/users/edit/23">
+              <span
+                [ngClass]="
+                  user.status == '1' ? 'btn btn-success' : 'btn btn-warning'
+                "
+                >{{ user.status == "1" ? "Active" : "Inactive" }}</span
+              >
+            </td>
+            <td>
+              <a
+                style="margin-right: 20px; color: inherit; font-size: 1rem"
+                routerLink="/users/edit/{{ user.id }}"
+              >
                 <i class="fa-solid fa-pen edit"></i>
               </a>
-              <i class="fa-solid fa-trash delete"></i>
+              <i
+                (click)="removeUser(user.id)"
+                class="fa-solid fa-trash delete"
+              ></i>
             </td>
           </tr>
-          <tr>
-            <th >1</th>
-            <td>Jack Sully</td>
-            <td>jack@email.com</td>
-            <td>Active</td>
-            <td>
-              <a style="margin-right: 20px; color: inherit; font-size: 1rem;" routerLink="/users/edit/23">
-                <i class="fa-solid fa-pen edit"></i>
-              </a>
-              <i class="fa-solid fa-trash delete"></i>
-            </td>
+          <tr *ngIf="(allUsers | search: searchKey).length === 0">
+            <p>User not found.</p>
           </tr>
         </tbody>
       </table>
+      <div class="text-center mt-5">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
     </div>
   </div>
 </div>

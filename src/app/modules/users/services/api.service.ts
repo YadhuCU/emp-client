@@ -6,7 +6,7 @@ import { UserSchema } from '../models/userSchema';
   providedIn: 'root',
 })
 export class ApiService {
-  SERVER_URL: string = 'http://localhost:3000';
+  SERVER_URL: string = 'https://emp-server-kd0m.onrender.com';
 
   constructor(private http: HttpClient) {}
 
